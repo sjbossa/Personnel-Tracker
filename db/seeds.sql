@@ -1,5 +1,6 @@
 -- SOURCE seeds.sql SECOND AFTER SOURCING schema.sql FIRST
-USE employee_DB;
+
+USE employeeDB;
 
 INSERT INTO department(name) VALUES 
 ("Engineering"), 

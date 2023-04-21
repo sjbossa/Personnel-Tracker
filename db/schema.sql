@@ -1,11 +1,11 @@
-DROP DATABASE IF EXISTS employee_DB;
-CREATE DATABASE employee_DB;
-USE employee_DB;
+DROP DATABASE IF EXISTS employeeDB;
+CREATE DATABASE employeeDB;
+USE employeeDB;
 
 CREATE TABLE department (
   id INT NOT NULL AUTO_INCREMENT,
   name VARCHAR(30) NULL,
-  PRIMARY KEY (id),
+  PRIMARY KEY (id)
 );
 
 CREATE TABLE role (
@@ -14,7 +14,7 @@ CREATE TABLE role (
   salary DECIMAL(10.3) NULL,
   department_id INT NULL,
   FOREIGN KEY (department_id) REFERENCES department(id),
-  PRIMARY KEY (id),
+  PRIMARY KEY (id)
 );
 
 CREATE TABLE employee (
@@ -25,5 +25,5 @@ CREATE TABLE employee (
   FOREIGN KEY (role_id) REFERENCES role(id),
   manager_id INT NULL,
   FOREIGN KEY (manager_id) REFERENCES employee(id),
-  PRIMARY KEY (id),
+  PRIMARY KEY (id)
 );
