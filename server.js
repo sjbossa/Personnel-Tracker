@@ -4,17 +4,17 @@ const mysql = require("mysql2");
 require("console.table");
 
 //Set up mysql connection
-var connection = mysql.createConnection (
+const db = mysql.createConnection (
     {
         host: 'localhost',
         user: 'root',
-        password: 'root',
+        password: '2wsx$RFV0okm&YGV',
         database: 'employee_DB'
     }
 );
 
 //Connect mysql server + database
-connection.connect(function (err) {
+db.connect(function (err) {
     if (err) console.error("Could not connect to Database");
     //Function to begin the command line interaction
     startPrompts();
