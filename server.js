@@ -9,13 +9,13 @@ const db = mysql.createConnection (
         host: 'localhost',
         user: 'root',
         password: '2wsx$RFV0okm&YGV',
-        database: 'employee_DB'
+        database: 'employeeDB'
     }
 );
 
 //Connect mysql server + database
 db.connect(function (err) {
-    if (err) console.error("Could not connect to Database");
+    if (err) console.error("Could not connect to Database\n");
     //Function to begin the command line interaction
     startPrompts();
 });
@@ -38,37 +38,37 @@ const startPrompts =() => {
     
     })
     .then((response) => {
-        const {intro} = response;
+        const {task} = response;
 
-        if (intro === "View all Employees") {
+        if (task === "View all Employees") {
             viewAllEmployees();
         }
 
-        if (intro === "Add an Employee") {
+        if (task === "Add an Employee") {
             addAnEmployee();
         }
 
-        if (intro === "View all Departments") {
+        if (task === "View all Departments") {
             viewAllDepartments();
         }
 
-        if (intro === "Add a Department") {
+        if (task === "Add a Department") {
             addADepartment();
         }
 
-        if (intro === "View all Roles") {
+        if (task === "View all Roles") {
             viewAllRoles();
         }
 
-        if (intro === "Add a Role") {
+        if (task === "Add a Role") {
             addARole();
         }
 
-        if (intro === "Update an Employee Role") {
+        if (task === "Update an Employee Role") {
             updateAnEmployeeRole();
         }
 
-        if (intro === "Close") {
+        if (task === "Close") {
             console.log("Thank's for trying this tracker! Your connection will now terminate for this session.\n")
             db.end();
         }
@@ -149,7 +149,7 @@ const viewAllDepartments = () => {
     startPrompts();
 };
 
-const addDepartment = () => {
+const addADepartment = () => {
     inquirer.prompt([
         {
             type: 'input',

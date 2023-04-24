@@ -1,5 +1,3 @@
--- SOURCE seeds.sql SECOND AFTER SOURCING schema.sql FIRST
-
 USE employeeDB;
 
 INSERT INTO department(name) VALUES 

@@ -22,5 +22,5 @@
     "url": "https://github.com/sjbossa/Personnel-Tracker/issues"
   },
   "homepage": "https://github.com/sjbossa/Personnel-Tracker#readme",
-  "description": ""
+  "description": "## Description This application is a command line program that helps manage a companies departments, roles, and employees. This application is meant to provide an easy way for non-developers and those unfamiliar with programming, an easy way to interact with databases."
 }
