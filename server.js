@@ -34,6 +34,7 @@ const startPrompts =() => {
         "View all Roles", 
         "Add a Role",
         "Update an Employee Role",
+        "Remove an Employee",
         "Close"]
     
     })
@@ -66,6 +67,10 @@ const startPrompts =() => {
 
         if (task === "Update an Employee Role") {
             updateAnEmployeeRole();
+        }
+
+        if (task === 'Remove an Employee') {
+            removeAnEmployee();
         }
 
         if (task === "Close") {
@@ -220,6 +225,44 @@ const addARole = () => {
         );
         console.log("The new role has been added!")
         viewAllRoles();
+        });
+    });
+};
+
+const removeAnEmployee = () => {
+    let sql = `SELECT employee.id, employee.first_name, employee.last_name FROM employee`;
+
+    db.query(sql, (error, response) => {
+      if (error) throw error;
+      let employeeNamesArray = [];
+      response.forEach((employee) => {employeeNamesArray.push(`${employee.first_name} ${employee.last_name}`);});
+
+      inquirer.prompt([
+          {
+            name: 'chosenEmployee',
+            type: 'list',
+            message: 'Which employee would you like to remove?',
+            choices: employeeNamesArray
+          }
+        ])
+        .then((answer) => {
+          let employeeId;
+
+          response.forEach((employee) => {
+            if (
+              answer.chosenEmployee ===
+              `${employee.first_name} ${employee.last_name}`
+            ) {
+              employeeId = employee.id;
+            }
+          });
+
+          let sql = `DELETE FROM employee WHERE employee.id = ?`;
+          db.query(sql, [employeeId], (error) => {
+            if (error) throw error;
+            console.log(`Employee has been successfully Removed!`);
+            viewAllEmployees();
+          });
         });
     });
 };
